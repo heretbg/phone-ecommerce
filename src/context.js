@@ -7,7 +7,10 @@ class ProductProvider extends Component {
     state = {
         products: [],
         detailProduct: detailProduct,
-        cart: []
+        cart: [],
+        modalOpen: false,
+        modalProduct: detailProduct,
+        cartTotal: 0
     };
 
     // gets setProducts after component is inserted into the tree
@@ -27,6 +30,21 @@ class ProductProvider extends Component {
         });
     };
 
+    // opens modal after adding item to cart
+    openModal = (id) => {
+        const product = this.getItem(id);
+        this.setState(() => {
+            return {modalProduct: product, modalOpen: true};
+        })
+    };
+
+    // closes modal
+    closemodal = () => {
+        this.setState(() => {
+            return {modalOpen: false};
+        })
+    };
+
     // get product by id
     getItem = (id) => {
         return this.state.products.find(item => item.id === id);
@@ -39,6 +57,7 @@ class ProductProvider extends Component {
         })
     };
 
+    // adds product to cart
     addToCart = (id) => {
         let tempProducts = [...this.state.products];
         const index = tempProducts.indexOf(this.getItem(id));
@@ -53,7 +72,24 @@ class ProductProvider extends Component {
                     product]
             };
         }, () => {
-            console.log(this.state)});
+            console.log(this.state)
+        });
+    };
+
+    increment = (id) => {
+        console.log('increment method');
+    };
+
+    decrement = (id) => {
+        console.log('decrement method');
+    };
+
+    removeItem = (id) => {
+        console.log('item removed');
+    };
+
+    clearCart = () => {
+        console.log('cart cleared');
     };
 
     render() {
@@ -62,8 +98,15 @@ class ProductProvider extends Component {
             <ProductContext.Provider value={{
                 ...this.state,
                 handleDetail: this.handleDetail,
-                addToCart: this.addToCart
-            }}>
+                addToCart: this.addToCart,
+                openModal: this.openModal,
+                closeModal: this.closemodal,
+                increment: this.increment,
+                decrement: this.decrement,
+                removeItem: this.removeItem,
+                clearCart: this.clearCart
+            }}
+            >
                 {this.props.children}
             </ProductContext.Provider>
         );
