@@ -24,7 +24,7 @@ export default class Product extends Component {
                                             value.addToCart(id)
                                         }}>
                                     {inCart ? (
-                                        <p className={"text-capitalize mb-0"} disabled>
+                                        <p className={"text-capitalize mb-0"}>
                                             {" "}
                                             in cart
                                         </p>
@@ -75,7 +75,7 @@ const ProductWrapper = styled.div`
     }
     &:hover {
         .card{
-            border: 0.4rem solid rgba(0,0,0,0.2);
+            border: 0.2rem solid rgba(0,0,0,0.2);
             box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.2);
         }    
         .card-footer {
@@ -87,11 +87,10 @@ const ProductWrapper = styled.div`
         overflow: hidden;        
     }
     .card-img-top {
-        transition: all 0.50 linear;
+        transition: all 0.25s linear;
     }
     .img-container:hover .card-img-top {
-        transform: scale(1.1);       
-        transition: all 0.25s linear;
+        transform: scale(1.1);               
     }
     .cart-btn {
         position: absolute;
@@ -101,7 +100,7 @@ const ProductWrapper = styled.div`
         background: var(--lightBlue);
         border: none;
         color: var(--mainWhite);
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         border-radius: 0.5rem 0 0 0;
         transform: translate(100%, 100%);
         transition: all 0.25s linear;
