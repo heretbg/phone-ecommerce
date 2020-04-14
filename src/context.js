@@ -5,9 +5,27 @@ const ProductContext = React.createContext();
 
 class ProductProvider extends Component {
     state = {
-        products: storeProducts,
+        products: [],
         detailProduct: detailProduct
     };
+
+    // gets setProducts after component is inserted into the tree
+    componentDidMount() {
+        this.setProducts();
+    }
+
+    // gets a copy of the list of products instead of referencing them
+    setProducts = () => {
+        let tempProducts = [];
+        storeProducts.forEach(item => {
+            const singleItem = {...item};
+            tempProducts = [...tempProducts, singleItem];
+        });
+        this.setState(() => {
+            return {products: tempProducts}
+        });
+    };
+
     handleDetail = () => {
         console.log('hello from detail');
     };
