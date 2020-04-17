@@ -24,4 +24,28 @@ body {
     color: var(--mainBlue);
 }
 
+.text-bright {
+    color: var(--lightBlue);
+}
+
+.btn-dark {
+    background: transparent;
+    text-transform: capitalize;
+    font-size: 0.8rem !important;
+    color: var(--mainDark);
+    border-radius: 0 !important;
+    border: 0.1rem solid var(--mainDark) !important;
+}
+
+.btn-dark:hover {
+    background: var(--mainDark) !important;
+    color: var(--mainWhite) !important;
+}
+
+.cart-icon {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--mainYellow);
+}
+
 
